@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
     cors: {
-      origin: ['http://localhost:5173'],
+      origin: ['http://localhost:5173', 'https://justmexmehak.github.io'],
       credentials: true,
     },
   });

@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { Patient } from '../patients/patient.entity';
 import { PrescriptionItem } from './prescription_item.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class VisitRecord {
@@ -35,9 +36,11 @@ export class VisitRecord {
   @Column()
   notes: string;
 
+  @Exclude({ toPlainOnly: true })
   @CreateDateColumn()
   createdAt: Date;
 
+  @Exclude({ toPlainOnly: true })
   @UpdateDateColumn()
   updatedAt: Date;
 }

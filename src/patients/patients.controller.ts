@@ -14,7 +14,12 @@ import { PatientsService } from './patients.service';
 import { Patient } from './patient.entity';
 import { ApiResponse, PaginationResponse } from '../response.interface';
 import { UpdatePatientDTO } from './dto/update-patient.dto';
-import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiBearerAuth,
+  ApiQuery,
+} from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from '../auth/guards/roles/roles.guard';
 import { Roles } from '../auth/roles.decorator';
@@ -53,10 +58,20 @@ export class PatientsController {
   @ApiOperation({ summary: 'Retrieve all patients' })
   @ApiQuery({ name: 'page', required: false, type: Number })
   @ApiQuery({ name: 'limit', required: false, type: Number })
+  @ApiQuery({ name: 'search', required: false, type: String })
   getPatients(
     @Query() getPaginatedDto: GetPaginatedDTO,
   ): Promise<ApiResponse<PaginationResponse<Patient>>> {
     return this.patientsService.getPatients(getPaginatedDto);
+  }
+
+  @Get(':patient_id')
+  @ApiOperation({ summary: 'Get details of a specific patient' })
+  @Roles(UserRole.ADMIN)
+  getPatient(
+    @Param('patient_id') patient_id: string,
+  ): Promise<ApiResponse<Patient>> {
+    return this.patientsService.getPatient(patient_id);
   }
 
   @Patch(':patient_id')

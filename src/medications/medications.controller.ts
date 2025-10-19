@@ -10,7 +10,7 @@ import { Medication } from './medication.entity';
 import { CreateMedicationDTO } from './dto/create-medication.dto';
 
 @Controller('medications')
-@ApiTags('Patients')
+@ApiTags('Medications')
 @UseGuards(AuthGuard(), RolesGuard)
 @ApiBearerAuth()
 export class MedicationsController {

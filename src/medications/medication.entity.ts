@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Medication {
@@ -23,8 +24,10 @@ export class Medication {
   prescription_items: PrescriptionItem[];
 
   @CreateDateColumn()
+  @Exclude({ toPlainOnly: true })
   created_at: Date;
 
   @UpdateDateColumn()
+  @Exclude({ toPlainOnly: true })
   updated_at: Date;
 }

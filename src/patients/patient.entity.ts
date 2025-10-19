@@ -8,6 +8,7 @@ import {
   Generated,
 } from 'typeorm';
 import { VisitRecord } from '../visit_records/visit_record.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Patient {
@@ -17,15 +18,16 @@ export class Patient {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   age: number;
 
-  @Column()
+  @Column({ nullable: true })
   contact: string;
 
   @Column({
     type: 'enum',
     enum: ['male', 'female', 'other'],
+    nullable: true,
   })
   gender: string;
 
@@ -37,8 +39,10 @@ export class Patient {
   visits: VisitRecord[];
 
   @CreateDateColumn()
+  @Exclude({ toPlainOnly: true })
   createdAt: Date;
 
   @UpdateDateColumn()
+  @Exclude({ toPlainOnly: true })
   updatedAt: Date;
 }

@@ -72,13 +72,14 @@ export class PatientsService {
       await this.patientsRepository.save(patient);
 
       const visit_record = await this.visitRecordsService.createVisit(
-        patient,
+        patient.id,
         visitDate,
         diagnosis,
         notes,
       );
       // await this.visitRecordsRepository.save(visit_record);
 
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       prescription.forEach(async (item) => {
         const { name, dosage, frequency, duration } = item;
 
@@ -122,6 +123,9 @@ export class PatientsService {
       const [patients, total] = await this.patientsRepository.findAndCount({
         skip: (page - 1) * limit,
         take: limit,
+        order: {
+          createdAt: 'DESC',
+        },
       });
       const totalPages = Math.ceil(total / limit);
       const paginated_response = {
@@ -148,6 +152,34 @@ export class PatientsService {
         status: 500,
       };
     }
+  }
+
+  async getPatient(patient_id: string): Promise<ApiResponse<Patient>> {
+    const patient = await this.patientsRepository.findOne({
+      where: { id: patient_id },
+      relations: [
+        'visits',
+        'visits.prescription',
+        'visits.prescription.medication',
+      ],
+      order: {
+        visits: {
+          visitDate: 'DESC',
+        },
+      },
+    });
+    if (!patient) {
+      return {
+        data: null,
+        message: 'Patient not found',
+        status: 404,
+      };
+    }
+    return {
+      data: patient,
+      message: 'Patient retrieved successfully',
+      status: 200,
+    };
   }
 
   async updatePatient(
