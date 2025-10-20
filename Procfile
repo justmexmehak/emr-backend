@@ -1,2 +1,2 @@
-web: npm run build && npm run start:prod
+web: node dist/main.js
 
