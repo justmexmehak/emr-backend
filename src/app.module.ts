@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as winston from 'winston';
 import { WinstonModule } from 'nest-winston';
 import { MedicationsModule } from './medications/medications.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -32,20 +33,10 @@ import { MedicationsModule } from './medications/medications.module';
             winston.format.simple(),
           ),
         }),
-        new winston.transports.File({
-          filename: 'logs/app.log',
-          maxsize: 2 * 1024 * 1024,
-          maxFiles: 5,
-        }),
-        new winston.transports.File({
-          filename: 'logs/error.log',
-          level: 'error',
-          maxsize: 2 * 1024 * 1024,
-          maxFiles: 5,
-        }),
       ],
     }),
     MedicationsModule,
+    HealthModule,
   ],
   controllers: [],
   providers: [],
