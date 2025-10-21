@@ -7,10 +7,10 @@ import { VisitRecord } from './visit_record.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PrescriptionItem } from './prescription_item.entity';
-import { Medication } from 'src/medications/medication.entity';
+import { Medication } from '../medications/medication.entity';
 import { CreateVisitRecordDTO } from './dto/create-visit-record.dto';
-import { MedicationsService } from 'src/medications/medications.service';
-import { ApiResponse } from 'src/response.interface';
+import { MedicationsService } from '../medications/medications.service';
+import { ApiResponse } from '../response.interface';
 
 @Injectable()
 export class VisitRecordsService {

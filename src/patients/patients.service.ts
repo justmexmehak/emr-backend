@@ -7,10 +7,10 @@ import { UpdatePatientDTO } from './dto/update-patient.dto';
 import { ApiResponse, PaginationResponse } from '../response.interface';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import type { LoggerService } from '@nestjs/common';
-import { CreateNewPatientDTO } from './dto/create-new-patient.dto ';
-import { VisitRecordsService } from 'src/visit_records/visit_records.service';
-import { MedicationsService } from 'src/medications/medications.service';
-import { GetPaginatedDTO } from 'src/dto/get-paginated.dto';
+import { CreateNewPatientDTO } from './dto/create-new-patient.dto';
+import { VisitRecordsService } from '../visit_records/visit_records.service';
+import { MedicationsService } from '../medications/medications.service';
+import { GetPaginatedDTO } from '../dto/get-paginated.dto';
 
 @Injectable()
 export class PatientsService {

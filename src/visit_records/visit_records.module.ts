@@ -4,8 +4,8 @@ import { VisitRecordsService } from './visit_records.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PrescriptionItem } from './prescription_item.entity';
 import { VisitRecord } from './visit_record.entity';
-import { MedicationsModule } from 'src/medications/medications.module';
-import { AuthModule } from 'src/auth/auth.module';
+import { MedicationsModule } from '../medications/medications.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [

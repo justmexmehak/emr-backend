@@ -4,7 +4,7 @@ import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { Medication } from './medication.entity';
 import type { LoggerService } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { ApiResponse } from 'src/response.interface';
+import { ApiResponse } from '../response.interface';
 import { CreateMedicationDTO } from './dto/create-medication.dto';
 
 @Injectable()

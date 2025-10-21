@@ -25,8 +25,8 @@ import { RolesGuard } from '../auth/guards/roles/roles.guard';
 import { Roles } from '../auth/roles.decorator';
 // import { GetUser } from '../auth/get-user.decorator';
 import { UserRole } from '../auth/user.entity';
-import { CreateNewPatientDTO } from './dto/create-new-patient.dto ';
-import { GetPaginatedDTO } from 'src/dto/get-paginated.dto';
+import { CreateNewPatientDTO } from './dto/create-new-patient.dto';
+import { GetPaginatedDTO } from '../dto/get-paginated.dto';
 
 @Controller('patients')
 @ApiTags('Patients')

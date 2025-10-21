@@ -1,7 +1,7 @@
 import { IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
-import { PrescriptionItemDTO } from 'src/patients/dto/prescription-item.dto';
+import { PrescriptionItemDTO } from '../../patients/dto/prescription-item.dto';
 
 export class CreateVisitRecordDTO {
   @ApiProperty({

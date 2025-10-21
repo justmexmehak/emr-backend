@@ -1,4 +1,4 @@
-import { PrescriptionItem } from 'src/visit_records/prescription_item.entity';
+import { PrescriptionItem } from '../visit_records/prescription_item.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
