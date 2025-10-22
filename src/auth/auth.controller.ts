@@ -25,7 +25,7 @@ export class AuthController {
   @ApiOperation({ summary: 'User login' })
   async login(
     @Body() authCredentialsDto: AuthCredentialsDTO,
-  ): Promise<{ accessToken: string }> {
+  ): Promise<{ accessToken: string; username: string }> {
     return await this.authService.login(authCredentialsDto);
   }
 
